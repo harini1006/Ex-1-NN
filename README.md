@@ -1,5 +1,5 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>NAME : HARINI V</H3>
+<H3>REGISTER NO. 212222230044</H3>
 <H3>EX. NO.1</H3>
 <H3>DATE</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
@@ -37,11 +37,107 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+#### importing libraries
+```
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+```
 
+#### Reading the dataset
+```
+df=pd.read_csv("/content/Churn_Modelling.csv", index_col="RowNumber")
+df
+```
+
+#### Dropping the unwanted Columns
+```
+df.drop(['CustomerId'],axis=1,inplace=True)
+df.drop(['Surname'],axis=1,inplace=True)
+df.drop('Age',axis=1,inplace=True)
+df.drop('Geography',axis=1,inplace=True)
+df.drop('Gender',axis=1,inplace=True)
+df
+```
+#### Checking for null values
+```
+df.isnull().sum()
+```
+#### Checking for duplicate values
+```
+df.duplicated()
+```
+#### Describing the dataset
+```
+df.describe()
+```
+#### Scaling the dataset
+```
+scaler=StandardScaler()
+df1=pd.DataFrame(scaler.fit_transform(df))
+df1
+```
+#### Allocating X and Y attributes
+```
+x=df1.iloc[:,:-1].values
+x
+y=df1.iloc[:,-1].values
+y
+```
+#### Splitting the data into training and testing dataset
+```
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2)
+print(x_train)
+print(len(x_train))
+print(x_test)
+print(len(x_test))
+```
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+#### DATASET:
+
+![image](https://github.com/harini1006/Ex-1-NN/assets/113497405/1a830cc7-f5aa-4867-99b7-0903d8434760)
+
+
+
+#### DROPPING THE UNWANTED DATASET:
+
+![image](https://github.com/harini1006/Ex-1-NN/assets/113497405/fe756e77-c0c1-47c6-a247-d0c2fa3a4ab8)
+
+
+
+#### CHECKING NULL VALUES:
+
+![image](https://github.com/harini1006/Ex-1-NN/assets/113497405/1e08b3b1-e273-4c70-b16e-ccd43590788c)
+#### CHECKING FOR DUPLICATION:
+
+![image](https://github.com/harini1006/Ex-1-NN/assets/113497405/328bfd2f-e57c-4af5-b97d-d0586f2fb26f)
+
+
+#### DESCRIBING THE DATASET:
+
+![image](https://github.com/harini1006/Ex-1-NN/assets/113497405/129508fe-dd43-46ce-b1f2-2ddaf24ea920)
+
+
+#### SCALING THE DATASET:
+![image](https://github.com/harini1006/Ex-1-NN/assets/113497405/808e4cd1-10b8-48e6-92aa-fc5327a901cd)
+
+
+#### X FEATURES:
+
+![image](https://github.com/harini1006/Ex-1-NN/assets/113497405/0b41cf3a-d01a-49ee-8fb8-51ef0260f69c)
+
+
+#### Y FEATURES:
+
+
+
+![image](https://github.com/harini1006/Ex-1-NN/assets/113497405/1adc2797-aae5-4867-8b3e-397472324263)
+
+
+#### SPLITTING THE TRAINING AND TESTING DATASET:
+![image](https://github.com/harini1006/Ex-1-NN/assets/113497405/0c6f0396-5397-42ff-a3de-338c6ba062b5)
 
 
 ## RESULT:
